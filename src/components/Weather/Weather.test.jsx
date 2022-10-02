@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 
 test('Weather render', async () => {
     // ARRANGE
-    render(<Weather temperature={10} />);
+    render(<Weather temperature={10} state='sunny' />);
     // ACT
     const temp = await screen.findByRole('heading');
     // ASSERT
