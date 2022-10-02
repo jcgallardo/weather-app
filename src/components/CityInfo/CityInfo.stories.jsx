@@ -1,5 +1,5 @@
 import React from 'react';
-import CityInfo from './CityInfo';
+import CityInfo from '.';
 import '@fontsource/roboto/300.css';
 
 export default {

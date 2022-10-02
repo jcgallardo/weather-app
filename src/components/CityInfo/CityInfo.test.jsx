@@ -1,5 +1,5 @@
 import React from 'react'
-import CityInfo from './CityInfo'; // SUT: Subject under testing
+import CityInfo from '.'; // SUT: Subject under testing
 import { render, screen } from "@testing-library/react";
 
 test("City Info render", async () => {

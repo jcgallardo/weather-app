@@ -1,5 +1,5 @@
 import React from "react";
-import Weather from './Weather';
+import Weather from './';
 import { render, screen } from "@testing-library/react";
 
 test('Weather render', async () => {
