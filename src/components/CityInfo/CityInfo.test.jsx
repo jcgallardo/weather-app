@@ -7,14 +7,15 @@ test("City Info render", async () => {
     const city = 'Madrid';
     const country = 'España';
 
-    // Arrange
+    // ARRANGE
     // Render: renderiza el componente y devuelve un conjunto de funciones
     render(<CityInfo city={ city } country={ country } />);
 
-    // Assert
+    // ACT
     const cityAndCountryComponent = await screen.findAllByRole("heading");
 
-    // ¿Cuándoo será correcto el test?
+    // ASSERT
+    // ¿Cuándo será correcto el test?
     // Cuando en el primer elemento se encuentre la ciudad Madrid
     // y cuando en el segundo elemento se encuentre el país España
     expect(cityAndCountryComponent[0]).toHaveTextContent(city);
