@@ -14,6 +14,10 @@ const cities = [
     {
         city: 'Puertollano',
         country: 'España'
+    },
+    {
+        city: 'Priego de Córdoba',
+        country: 'España'
     }
 ]
 
