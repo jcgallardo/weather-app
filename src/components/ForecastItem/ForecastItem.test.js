@@ -1,6 +1,17 @@
 import React from 'react'
-import { render, screeen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import ForecastItem from '.'
 
-test('ForecastItem render', () => {
-    
+test('ForecastItem render', async () => {
+    render(
+        <ForecastItem
+            hour={10}
+            state='sunny'
+            temperature={25}
+            weekDay='lunes'
+        />
+    )
+
+    const temperature = await screen.findByText(/25/);
+    expect(temperature).toHaveTextContent('25°');
 })
