@@ -6,7 +6,11 @@ import { Grid } from '@material-ui/core'
 const renderForecastItem = (forecast) => {
     const {weekDay, hour, state, temperature} = forecast
     return (
-        <Grid item key={`${weekDay}-${hour}`}>
+        <Grid
+            item
+            key={`${weekDay}-${hour}`}
+            data-testid='forecast-item-container'
+        >
             <ForecastItem
                 hour={hour}
                 weekDay={weekDay}
@@ -24,6 +28,7 @@ const Forecast = ({
     <Grid container
         justifyContent='center'
         alignItems='center'
+        data-testid='forecast-container'
     >
         {
             forecastItemList.map(forecastItem => renderForecastItem(forecastItem))
