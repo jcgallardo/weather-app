@@ -4,10 +4,11 @@ import CityInfo from '../CityInfo'
 import Weather from '../Weather'
 import { Grid } from '@material-ui/core'
 
-const renderCityAndCountry = cityAndCountry => {
+// Currying (Purificación) - función que devuelve otra función
+const renderCityAndCountry = onClickCity => cityAndCountry => {
     const { city, country } = cityAndCountry;
     return (
-        <li key={ city }>
+        <li key={ city } onClick={ onClickCity }>
             <Grid container
                 justifyContent='center'
                 alignItems='center'
@@ -23,11 +24,11 @@ const renderCityAndCountry = cityAndCountry => {
     )
 }
 
-const CityList = ({ cities }) => {
+const CityList = ({ cities, onClickCity }) => {
     return cities?.length && (
         <ul>
             {
-                cities.map(renderCityAndCountry)
+                cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry))
             }
         </ul>
     )
@@ -37,7 +38,8 @@ CityList.propTypes = {
     cities: PropTypes.arrayOf(PropTypes.shape({
         city: PropTypes.string.isRequired,
         country: PropTypes.string.isRequired
-    })).isRequired
+    })).isRequired,
+    onClickCity: PropTypes.func
 }
 
 export default CityList

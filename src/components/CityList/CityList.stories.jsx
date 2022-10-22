@@ -22,3 +22,4 @@ const cities = [
 ]
 
 export const CityListExample = () => <CityList cities={ cities } />
+export const CityListWithClickAction = () => <CityList cities={ cities } onClickCity={ ()=>alert('click!!') } />

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import CityList from ".";
 
 const cities = [
@@ -27,4 +27,18 @@ test('CityList renders with cities', async () => {
 
     // ASSERT
     expect(citiesComponent).toHaveLength(cities.length);
+})
+
+test('CityList click on item', async () => {
+    
+    // ARRANGE
+    const fnClickOnItem = jest.fn();
+    render(<CityList cities={ cities } onClickCity={fnClickOnItem} />);
+
+    // ACT
+    const citiesComponent = await screen.findAllByRole("listitem");
+    fireEvent.click(citiesComponent[0]);
+
+    // ASSERT
+    expect(fnClickOnItem).toHaveBeenCalledTimes(1);
 })
