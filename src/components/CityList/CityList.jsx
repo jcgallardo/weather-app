@@ -2,13 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CityInfo from '../CityInfo'
 import Weather from '../Weather'
+import { Grid } from '@material-ui/core'
 
 const renderCityAndCountry = cityAndCountry => {
     const { city, country } = cityAndCountry;
     return (
         <li key={ city }>
-            <CityInfo city={ city } country={ country }  />
-            <Weather state='cloudy' temperature={ 10 }  />
+            <Grid container
+                justifyContent='center'
+                alignItems='center'
+            >
+                <Grid item md={8} xs={12}>
+                    <CityInfo city={ city } country={ country }  />
+                </Grid>
+                <Grid item md={4} xs={12}>
+                    <Weather state='cloudy' temperature={ 10 }  />
+                </Grid>
+            </Grid>
         </li>
     )
 }
