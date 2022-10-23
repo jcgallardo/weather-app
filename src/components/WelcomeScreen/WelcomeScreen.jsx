@@ -20,6 +20,14 @@ const WelcomeScreen = ({
             )
             console.log('Vanta initialized!')
         }
+
+        // saneamiento del efecto
+        return () => {
+            if (vanta) {
+                vanta.destroy()
+                console.log('Vanta destroyed!')
+            }
+        }
     }, [vanta]);
 
     return (
