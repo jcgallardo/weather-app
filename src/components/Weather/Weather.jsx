@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Typography } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import IconState from '../IconState';
 
 const Weather = ({ state, temperature }) => {
   return (
-    <>
-      <IconState state={ state } contextOptions={{ size: '5em' }}  />
+    <Grid container item direction='row' justifyContent='center' alignItems='center' spacing={1}>
+      <IconState state={ state } contextOptions={{ size: '6em' }}  />
       <Typography display='inline' variant='h2'>{ temperature }</Typography> 
-    </>
+    </Grid>
   )
 }
 
