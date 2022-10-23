@@ -1,7 +1,8 @@
-import { Grid, Typography } from '@material-ui/core'
+import { Grid, Link, Typography } from '@material-ui/core'
 import React from 'react'
 import { IconContext } from 'react-icons'
 import { WiDaySunny } from 'react-icons/wi'
+import { Link as RouterLink } from 'react-router-dom'
 import WelcomeScreen from '../components/WelcomeScreen'
 
 const WelcomePage = props => {
@@ -17,6 +18,14 @@ const WelcomePage = props => {
             </Grid>
             <Grid item container direction='column' justifyContent='center' alignItems='center'>
               <Typography variant="h4">Weather App</Typography>
+              <Link
+                color="inherit"
+                aria-label='menu'
+                component={ RouterLink }
+                to="/main"
+              >
+                Entrar
+              </Link>
             </Grid>
           </Grid>
         </div>
