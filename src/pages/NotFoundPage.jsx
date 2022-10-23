@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const NotFoundPage = () => {
+const NotFoundPage = props => {
   return (
     <div>
       NotFoundPage
@@ -11,5 +11,7 @@ const NotFoundPage = () => {
     </div>
   )
 }
+
+NotFoundPage.propTypes = {}
 
 export default NotFoundPage;

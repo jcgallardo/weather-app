@@ -25,13 +25,13 @@ const renderCityAndCountry = onClickCity => cityAndCountry => {
 }
 
 const CityList = ({ cities, onClickCity }) => {
-    return cities?.length && (
+    return cities?.length ? (
         <ul>
             {
                 cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry))
             }
         </ul>
-    )
+    ) : null;
 }
 
 CityList.propTypes = {

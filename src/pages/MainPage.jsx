@@ -1,12 +1,35 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import CityList from '../components/CityList'
+
 
 const MainPage = props => {
+  const history = useHistory()
+
+  const onClickHandler = () => {
+    history.push('/city')
+  }
+
+  const cities = [
+    {
+        city: 'Madrid',
+        country: 'España'
+    },
+    {
+        city: 'Puertollano',
+        country: 'España'
+    },
+    {
+        city: 'Priego de Córdoba',
+        country: 'España'
+    }
+]
+
   return (
     <div>
       MainPage
       <div>
-        <Link to="/main">Ir a main</Link>
+        <CityList cities={cities} onClickCity={ onClickHandler } />
       </div>
     </div>
   )

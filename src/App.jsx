@@ -4,20 +4,23 @@ import WelcomePage from './pages/WelcomePage'
 import MainPage from './pages/MainPage'
 import CityPage from './pages/CityPage'
 import NotFoundPage from './pages/NotFoundPage'
+import { Grid } from '@material-ui/core'
 
 const App = props => {
   return (
-    <div>
-      <h1>App</h1>
-      <Router>
-        <Switch>
-          <Route path="/" exact component={ WelcomePage } />
-          <Route path="/main" component={ MainPage } />
-          <Route path="/city" component={ CityPage } />
-          <Route component={ NotFoundPage } />
-        </Switch>
-      </Router>
-    </div>
+    <Grid container justifyContent='center' direction='row'>
+      <Grid item sm={10}>
+        <h1>App</h1>
+        <Router>
+          <Switch>
+            <Route path="/" exact component={ WelcomePage } />
+            <Route path="/main" component={ MainPage } />
+            <Route path="/city" component={ CityPage } />
+            <Route component={ NotFoundPage } />
+          </Switch>
+        </Router>
+      </Grid>
+    </Grid>
   )
 }
 
