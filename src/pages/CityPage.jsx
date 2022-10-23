@@ -1,10 +1,11 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Paper } from "@material-ui/core";
 import CityInfo from "../components/CityInfo";
 import Weather from "../components/Weather";
 import WeatherDetails from "../components/WeatherDetails";
 import ForecastChart from "../components/ForecastChart";
 import Forecast from "../components/Forecast";
+import AppFrame from "../components/AppFrame";
 
 const CityPage = (props) => {
   const city = "Madrid";
@@ -56,25 +57,29 @@ const CityPage = (props) => {
   ];
 
   return (
-    <Grid container justifyContent="space-around" direction="column" spacing={2}>
-      <Grid container item xs={12} justifyContent="center" alignItems="flex-end">
-        <CityInfo city={city} country={country} />
-      </Grid>
-      <Grid container item xs={12} justifyContent="center">
-          <Weather
-            state={state}
-            temperature={temperature}
-            humidity={humidity}
-          />
-          <WeatherDetails humidity={humidity} wind={wind} />
-      </Grid>
-      <Grid container item>
-        <ForecastChart data={data} />
-      </Grid>
-      <Grid container item>
-        <Forecast forecastItemList={forecastItemList} />
-      </Grid>
-    </Grid>
+    <AppFrame>
+      <Paper elevation={3}>
+        <Grid container justifyContent="space-around" direction="column" spacing={2}>
+          <Grid container item xs={12} justifyContent="center" alignItems="flex-end">
+            <CityInfo city={city} country={country} />
+          </Grid>
+          <Grid container item xs={12} justifyContent="center">
+              <Weather
+                state={state}
+                temperature={temperature}
+                humidity={humidity}
+              />
+              <WeatherDetails humidity={humidity} wind={wind} />
+          </Grid>
+          <Grid container item>
+            <ForecastChart data={data} />
+          </Grid>
+          <Grid container item>
+            <Forecast forecastItemList={forecastItemList} />
+          </Grid>
+        </Grid>
+      </Paper>
+    </AppFrame>
   );
 };
 
