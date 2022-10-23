@@ -59,7 +59,7 @@ const CityPage = (props) => {
   return (
     <AppFrame>
       <Paper elevation={3}>
-        <Grid container justifyContent="space-around" direction="column" spacing={2}>
+        <Grid container justifyContent="space-around" direction="column">
           <Grid container item xs={12} justifyContent="center" alignItems="flex-end">
             <CityInfo city={city} country={country} />
           </Grid>
