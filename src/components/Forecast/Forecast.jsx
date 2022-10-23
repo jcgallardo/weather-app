@@ -26,7 +26,7 @@ const Forecast = ({
 }) => {
   return (
     <Grid container
-        justifyContent='center'
+        justifyContent='space-around'
         alignItems='center'
         data-testid='forecast-container'
     >
