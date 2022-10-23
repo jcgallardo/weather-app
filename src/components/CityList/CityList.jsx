@@ -2,13 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CityInfo from '../CityInfo'
 import Weather from '../Weather'
-import { Grid } from '@material-ui/core'
+import { Grid, List, ListItem } from '@material-ui/core'
 
 // Currying (Purificación) - función que devuelve otra función
 const renderCityAndCountry = onClickCity => cityAndCountry => {
     const { city, country } = cityAndCountry;
     return (
-        <li key={ city } onClick={ onClickCity }>
+        <ListItem
+            key={ city }
+            onClick={ onClickCity }
+            button
+        >
             <Grid container
                 justifyContent='center'
                 alignItems='center'
@@ -20,17 +24,17 @@ const renderCityAndCountry = onClickCity => cityAndCountry => {
                     <Weather state='cloudy' temperature={ 10 }  />
                 </Grid>
             </Grid>
-        </li>
+        </ListItem>
     )
 }
 
 const CityList = ({ cities, onClickCity }) => {
     return cities?.length ? (
-        <ul>
+        <List>
             {
                 cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry))
             }
-        </ul>
+        </List>
     ) : null;
 }
 
