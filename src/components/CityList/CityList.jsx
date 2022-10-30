@@ -44,10 +44,13 @@ const CityList = ({ cities, onClickCity }) => {
                         .replace('{countryCode}', countryCode)
                 )
                 
-                const { data: { 
-                    main: { temp },
-                    weather
-                } } = response;
+                const {
+                    data: { 
+                        main: { temp },
+                        weather
+                    }
+                } = response;
+                
                 const propName = `${city}-${country}`;
                 const temperature = Number(convertUnits(temp).from('K').to('C').toFixed(0));
                 const propValue = { 
@@ -81,7 +84,7 @@ const CityList = ({ cities, onClickCity }) => {
         cities.forEach(({ city, country, countryCode }) => {
             setWeather(city, country, countryCode);
         });
-        
+
     }, [cities])
 
     return  (
