@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { IconContext } from 'react-icons';
+import Skeleton from '@material-ui/lab/Skeleton';
 import { 
     WiDayCloudy,
     WiDaySunny,
@@ -24,14 +25,18 @@ const IconState = ({ state, contextOptions }) => {
     const Icon = stateByName[state];
     return (
         <IconContext.Provider value={ contextOptions } >
-            <Icon state={ state } />
+            { 
+                state
+                ? <Icon state={ state } />
+                : <Skeleton variant="circle" animation="wave" height={96} width={96} />
+            }
         </IconContext.Provider>
     )
 }
 
 IconState.propTypes = {
     contextOptions: PropTypes.object,
-    state: PropTypes.oneOf(Object.keys(stateByName)).isRequired,
+    state: PropTypes.oneOf(Object.keys(stateByName)),
 }
 
 IconState.defaultProps = {
