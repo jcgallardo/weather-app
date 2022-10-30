@@ -44,11 +44,16 @@ const CityList = ({ cities, onClickCity }) => {
                     .replace('{countryCode}', countryCode)
             )
             .then(response => {
-                const { data: { main: { temp } } } = response;
+                const { data: { 
+                    main: { temp },
+                    weather
+                } } = response;
                 const propName = `${city}-${country}`;
                 const temperature = +(temp) - 273; // La respuesta da la temperatura en grados Kelvin
-                const state = 'clear';
-                const propValue = { temperature, state };
+                const propValue = { 
+                    temperature,
+                    state: weather[0]?.main?.toLowerCase()
+                };
 
                 // ¡NOTA!: Para asegurar que estamos cogiendo el estado anterior, es necesario indicar una función al setter.
                 // De la siguiente manera no obtendríamos el estado anterior en cada iteracción.
