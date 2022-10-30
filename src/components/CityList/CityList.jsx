@@ -37,7 +37,12 @@ const CityList = ({ cities, onClickCity }) => {
     const [allWeather, setAllWeather] = useState({});
 
     useEffect(()=>{
-        const setWeather = (city, country) => axios.get(process.env.REACT_APP_WEATHER_URL.replace('{city}', city))
+        const setWeather = (city, country, countryCode) => 
+            axios.get(
+                process.env.REACT_APP_WEATHER_URL
+                    .replace('{city}', city)
+                    .replace('{countryCode}', countryCode)
+            )
             .then(response => {
                 const { data: { main: { temp } } } = response;
                 const propName = `${city}-${country}`;
@@ -58,8 +63,8 @@ const CityList = ({ cities, onClickCity }) => {
                     [propName]: propValue
                 }));
             });
-        cities.forEach(({ city, country }) => {
-            setWeather(city, country);
+        cities.forEach(({ city, country, countryCode }) => {
+            setWeather(city, country, countryCode);
         });
     }, [cities])
 
