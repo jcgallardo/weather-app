@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import convertUnits from 'convert-units'
 import CityInfo from '../CityInfo'
 import Weather from '../Weather'
 import { Grid, List, ListItem } from '@material-ui/core'
@@ -24,7 +25,7 @@ const renderCityAndCountry = onClickCity => (cityAndCountry, weather) => {
                 <Grid item md={3} xs={12}>
                     {
                         weather
-                            ? <Weather state={ weather.state } temperature={ parseInt(weather.temperature) }  />
+                            ? <Weather state={ weather.state } temperature={ weather.temperature }  />
                             : "No hay datos"
                     }
                 </Grid>
@@ -49,7 +50,7 @@ const CityList = ({ cities, onClickCity }) => {
                     weather
                 } } = response;
                 const propName = `${city}-${country}`;
-                const temperature = +(temp) - 273; // La respuesta da la temperatura en grados Kelvin
+                const temperature = Number(convertUnits(temp).from('K').to('C').toFixed(0));
                 const propValue = { 
                     temperature,
                     state: weather[0]?.main?.toLowerCase()
