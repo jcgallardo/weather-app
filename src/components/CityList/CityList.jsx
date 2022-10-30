@@ -36,13 +36,14 @@ const CityList = ({ cities, onClickCity }) => {
     const [error, setError] = useState(null);
 
     useEffect(()=>{
-        const setWeather = (city, country, countryCode) => 
-            axios.get(
-                process.env.REACT_APP_WEATHER_URL
-                    .replace('{city}', city)
-                    .replace('{countryCode}', countryCode)
-            )
-            .then(response => {
+        const setWeather = async (city, country, countryCode) => {
+            try {
+                const response = await axios.get(
+                    process.env.REACT_APP_WEATHER_URL
+                        .replace('{city}', city)
+                        .replace('{countryCode}', countryCode)
+                )
+                
                 const { data: { 
                     main: { temp },
                     weather
@@ -66,8 +67,7 @@ const CityList = ({ cities, onClickCity }) => {
                     ...allWeather,
                     [propName]: propValue
                 }));
-            })
-            .catch(error => {
+            } catch (error) {
                 if (error.response) { // Errores que nos response el server
                     setError("Ha ocurrido un error en el servidor del clima");
                 } else if (error.request) { // Errores que suceden por no llegar al server
@@ -75,10 +75,13 @@ const CityList = ({ cities, onClickCity }) => {
                 } else {
                     setError("Ha ocurrido un error inesperado");
                 }
-            });
+            }
+        }
+
         cities.forEach(({ city, country, countryCode }) => {
             setWeather(city, country, countryCode);
         });
+        
     }, [cities])
 
     return  (
