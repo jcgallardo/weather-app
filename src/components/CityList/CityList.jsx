@@ -7,12 +7,14 @@ import Weather from '../Weather'
 import { Grid, List, ListItem } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
 
+const getCityCode = (city, countryCode) => `${city}-${countryCode}`;
+
 // Currying (Purificación) - función que devuelve otra función
 const renderCityAndCountry = onClickCity => (cityAndCountry, weather) => {
-    const { city, country } = cityAndCountry;
+    const { city, country, countryCode } = cityAndCountry;
     return (
         <ListItem
-            key={ city }
+            key={ getCityCode(city, countryCode) }
             onClick={ onClickCity }
             button
         >
@@ -36,7 +38,7 @@ const CityList = ({ cities, onClickCity }) => {
     const [error, setError] = useState(null);
 
     useEffect(()=>{
-        const setWeather = async (city, country, countryCode) => {
+        const setWeather = async (city, countryCode) => {
             try {
                 const response = await axios.get(
                     process.env.REACT_APP_WEATHER_URL
@@ -50,8 +52,8 @@ const CityList = ({ cities, onClickCity }) => {
                         weather
                     }
                 } = response;
-                
-                const propName = `${city}-${country}`;
+
+                const propName = getCityCode(city, countryCode);
                 const temperature = Number(convertUnits(temp).from('K').to('C').toFixed(0));
                 const propValue = { 
                     temperature,
@@ -82,7 +84,7 @@ const CityList = ({ cities, onClickCity }) => {
         }
 
         cities.forEach(({ city, country, countryCode }) => {
-            setWeather(city, country, countryCode);
+            setWeather(city, countryCode);
         });
 
     }, [cities])
@@ -97,7 +99,7 @@ const CityList = ({ cities, onClickCity }) => {
                 {
                     cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(
                         cityAndCountry,
-                        allWeather[`${cityAndCountry.city}-${cityAndCountry.country}`]
+                        allWeather[getCityCode(cityAndCountry.city, cityAndCountry.countryCode)]
                     ))
                 }
                 </List>
