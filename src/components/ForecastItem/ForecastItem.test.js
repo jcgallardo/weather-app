@@ -6,7 +6,7 @@ test('ForecastItem render', async () => {
     render(
         <ForecastItem
             hour={10}
-            state='sunny'
+            state='clear'
             temperature={25}
             weekDay='lunes'
         />

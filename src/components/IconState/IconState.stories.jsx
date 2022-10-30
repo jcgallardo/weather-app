@@ -8,7 +8,7 @@ export default {
 
 export const IconStateExample = () => (
     <IconState
-        state={ 'sunny' }
+        state={ 'thunderstorm' }
         contextOptions={{ size: '5em' }}
     />
 )

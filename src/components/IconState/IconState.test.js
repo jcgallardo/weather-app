@@ -1,9 +1,9 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import React from 'react'
 import IconState from './IconState'
 
 test('IconState render', async () => {
-    render(<IconState state='sunny' />);
+    render(<IconState state='clear' />);
 
     // TODO: svg role???
     // const icon = await screen.findAllByRole('none');

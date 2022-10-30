@@ -4,15 +4,18 @@ import CityList from ".";
 const cities = [
     {
         city: 'Madrid',
-        country: 'España'
+        country: 'España',
+        countryCode: 'ES'
     },
     {
         city: 'Puertollano',
-        country: 'España'
+        country: 'España',
+        countryCode: 'ES'
     },
     {
         city: 'Priego de Córdoba',
-        country: 'España'
+        country: 'España',
+        countryCode: 'ES'
     }
 ];
 

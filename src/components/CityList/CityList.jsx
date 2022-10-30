@@ -24,14 +24,14 @@ const renderCityAndCountry = onClickCity => (cityAndCountry, weather) => {
                 <Grid item md={3} xs={12}>
                     {
                         weather
-                            ? <Weather state={ weather.state } temperature={ weather.temperature.toFixed(0) }  />
+                            ? <Weather state={ weather.state } temperature={ parseInt(weather.temperature) }  />
                             : "No hay datos"
                     }
                 </Grid>
             </Grid>
         </ListItem>
     )
-}
+};
 
 const CityList = ({ cities, onClickCity }) => {
     const [allWeather, setAllWeather] = useState({});
@@ -46,9 +46,9 @@ const CityList = ({ cities, onClickCity }) => {
             .then(response => {
                 const { data: { main: { temp } } } = response;
                 const propName = `${city}-${country}`;
-                const temperature = temp - 273; // La respuesta da la temperatura en grados Kelvin
-                const state = 'sunny';
-                const propValue = { temperature, state } 
+                const temperature = +(temp) - 273; // La respuesta da la temperatura en grados Kelvin
+                const state = 'clear';
+                const propValue = { temperature, state };
 
                 // ¡NOTA!: Para asegurar que estamos cogiendo el estado anterior, es necesario indicar una función al setter.
                 // De la siguiente manera no obtendríamos el estado anterior en cada iteracción.

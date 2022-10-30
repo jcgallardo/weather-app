@@ -2,21 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { IconContext } from 'react-icons';
 import { 
-    WiCloud,
     WiDayCloudy,
-    WiDayFog,
     WiDaySunny,
-    WiRain
+    WiRain,
+    WiRaindrop,
+    WiSnow,
+    WiThunderstorm
   } from 'react-icons/wi';
 
 
 const stateByName = {
-    cloud: WiCloud,
-    cloudy: WiDayCloudy,
-    fog: WiDayFog,
-    sunny: WiDaySunny,
-    rain: WiRain
-}
+    clouds: WiDayCloudy,
+    clear: WiDaySunny,
+    rain: WiRain,
+    snow: WiSnow,
+    drizzle: WiRaindrop,
+    thunderstorm: WiThunderstorm
+};
   
 const IconState = ({ state, contextOptions }) => {
     const Icon = stateByName[state];
