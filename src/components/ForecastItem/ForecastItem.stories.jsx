@@ -10,7 +10,7 @@ export const ForecastItemExample = () => (
     <ForecastItem 
         weekDay='lunes'
         hour={12}
-        state={'sunny'}
+        state={'clear'}
         temperature={25}
     />
 )
