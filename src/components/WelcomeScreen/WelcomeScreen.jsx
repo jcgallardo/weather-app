@@ -1,34 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import Clouds from 'vanta/dist/vanta.clouds.min'
-import * as THREE from 'three'
+import useVanta from '../../hooks/useVanta'
 
 const WelcomeScreen = ({
     children
 }) => {
-    const myRef = useRef(null);
-    const [vanta, setVanta] = useState(null);
-
-    // didMount
-    useEffect(()=> {
-        if (!vanta){
-            setVanta(
-                Clouds({
-                    THREE,
-                    el: myRef.current
-                })
-            )
-            console.log('Vanta initialized!')
-        }
-
-        // saneamiento del efecto
-        return () => {
-            if (vanta) {
-                vanta.destroy()
-                console.log('Vanta destroyed!')
-            }
-        }
-    }, [vanta]);
+    const { myRef } = useVanta();
 
     return (
         <div ref={ myRef } className="full">
