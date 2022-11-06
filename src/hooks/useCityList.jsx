@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import convertUnits from 'convert-units'
-import { getCityCode, getWeatherUrl } from "../utils/utils";
+import { getCityCode } from "../utils/utils";
+import { getWeatherUrl } from "../utils/urls";
 
 /**
  * HOOK cityList

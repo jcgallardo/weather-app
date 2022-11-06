@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getForecastUrl, toCelsius } from "../utils/utils";
+import { toCelsius } from "../utils/utils";
+import { getForecastUrl } from "../utils/urls";
 
 const locale = "es-ES";
 
