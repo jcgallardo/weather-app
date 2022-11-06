@@ -28,7 +28,7 @@ const parseTemperature = (dataList) => {
 
   return days.map((day) => {
     const dayHour = day.toLocaleDateString(locale, dateOptions);
-    const listDays = dataList
+    const temps = dataList
       .filter((item) => {
         const dtDate = new Date(item.dt * 1000); // from unix format
         return (
@@ -39,15 +39,16 @@ const parseTemperature = (dataList) => {
       })
       .map((listDay) => listDay.main.temp);
 
-    const min = toCelsius(Math.min(...listDays));
-    const max = toCelsius(Math.max(...listDays));
+    const min = toCelsius(Math.min(...temps));
+    const max = toCelsius(Math.max(...temps));
 
     return {
       dayHour,
       min,
       max,
+      hasTemps: !!temps.length
     };
-  });
+  }).filter(day => day.hasTemps);
 };
 
 /**
