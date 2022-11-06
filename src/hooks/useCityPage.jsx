@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { toCelsius } from "../utils/utils";
+import { getForecastUrl, toCelsius } from "../utils/utils";
 
 const locale = "es-ES";
 
@@ -85,13 +85,9 @@ const useCityPage = () => {
 
   useEffect(() => {
     const fetchForecast = async () => {
+      const url = getForecastUrl(city, countryCode);
       try {
-        const response = await axios.get(
-          process.env.REACT_APP_FORECAST_URL.replace("{city}", city).replace(
-            "{countryCode}",
-            countryCode
-          )
-        );
+        const response = await axios.get(url);
 
         const temperature = parseTemperature(response.data.list);
         setChartData(temperature);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import convertUnits from 'convert-units'
-import { getCityCode } from "../utils/utils";
+import { getCityCode, getWeatherUrl } from "../utils/utils";
 
 /**
  * HOOK cityList
@@ -12,13 +12,10 @@ import { getCityCode } from "../utils/utils";
 
     useEffect(()=>{
         const setWeather = async (city, countryCode) => {
+            const url = getWeatherUrl(city, countryCode);
+
             try {
-                const response = await axios.get(
-                    process.env.REACT_APP_WEATHER_URL
-                        .replace('{city}', city)
-                        .replace('{countryCode}', countryCode)
-                )
-                
+                const response = await axios.get(url)    
                 const {
                     data: { 
                         main: { temp },
