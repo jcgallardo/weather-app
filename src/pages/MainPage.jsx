@@ -3,6 +3,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import AppFrame from '../components/AppFrame'
 import CityList from '../components/CityList'
+import { getCities } from '../utils/serviceCities'
 
 
 const MainPage = props => {
@@ -12,23 +13,7 @@ const MainPage = props => {
     history.push(`/city/${countryCode}/${city}`)
   }
 
-  const cities = [
-    {
-        city: 'Madrid',
-        country: 'España',
-        countryCode: 'ES'
-    },
-    {
-        city: 'Puertollano',
-        country: 'España',
-        countryCode: 'ES'
-    },
-    {
-        city: 'Priego de Córdoba',
-        country: 'España',
-        countryCode: 'ES'
-    }
-]
+  const cities = getCities();
 
   return (
     <AppFrame>
