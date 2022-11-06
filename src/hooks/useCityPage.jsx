@@ -45,6 +45,7 @@ const useCityPage = () => {
 
   return {
     city,
+    countryCode,
     chartData, 
     forecastItemList,
     error,

@@ -17,3 +17,5 @@ const cities = [
 ]
 
 export const getCities = () => (cities);
+
+export const getCountryNameByCountryCode = (countryCode) => cities.find(city => city.countryCode === countryCode).country

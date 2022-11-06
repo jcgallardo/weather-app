@@ -3,8 +3,9 @@ import { getCityCode, toCelsius } from "../utils";
 const getAllWeather = (response, city, countryCode) => {
     const {
         data: { 
-            main: { temp },
-            weather
+            main: { temp, humidity },
+            weather,
+            wind: { speed }
         }
     } = response;
 
@@ -12,7 +13,9 @@ const getAllWeather = (response, city, countryCode) => {
     const temperature = toCelsius(temp);
     const propValue = { 
         temperature,
-        state: weather[0]?.main?.toLowerCase()
+        state: weather[0]?.main?.toLowerCase(),
+        humidity,
+        wind: speed
     };
 
     return {
