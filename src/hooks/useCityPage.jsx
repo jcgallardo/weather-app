@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useDebugValue, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getForecastUrl } from "../utils/urls";
 import getChartData from "../utils/transform/getChartData";
@@ -12,6 +12,8 @@ const useCityPage = () => {
   const [chartData, setChartData] = useState(null);
   const [forecastItemList, setForecastItemList] = useState(null);
   const [error, setError] = useState(null);
+
+  useDebugValue(`useCityPage ${city}`)
 
   useEffect(() => {
     const fetchForecast = async () => {
