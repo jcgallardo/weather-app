@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getForecastUrl } from "../utils/urls";
 import getChartData from "../utils/transform/getChartData";
-import getForecastData from "../utils/transform/getForecastData";
+import getForecastItemList from "../utils/transform/getForecastItemList";
 
 const locale = "es-ES";
 
@@ -23,7 +23,7 @@ const useCityPage = () => {
         setChartData(chartData);
 
         // Forecast
-        const forecastData = getForecastData(response.data.list, locale);
+        const forecastData = getForecastItemList(response.data.list, locale);
         setForecastItemList(forecastData);
       } catch (error) {
         console.error(error);

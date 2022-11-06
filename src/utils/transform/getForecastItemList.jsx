@@ -11,7 +11,7 @@ import { toCelsius } from "../utils";
  * @param {*} dataList
  * @returns
  */
-const getForecastData = (dataList, locale) => {
+const getForecastItemList = (dataList, locale) => {
     const interval = [4, 8, 12, 16, 20, 24];
     return dataList
       .filter((item, index) => interval.includes(index))
@@ -26,5 +26,5 @@ const getForecastData = (dataList, locale) => {
       });
 };
 
-export default getForecastData;
+export default getForecastItemList;
   
